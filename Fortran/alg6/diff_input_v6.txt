@@ -1,0 +1,11 @@
+3 ! "polygon_shape"
+
+5 ! "Generation_max"
+
+1000000 ! "num_particle"
+
+1.00d3 ! "Length"
+
+3 ! "alpha_angle_ratio"
+
+-1 ! "direct" = direction

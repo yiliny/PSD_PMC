@@ -1,0 +1,29 @@
+***** ***** ***** 说明 ***** ***** *****
+***** ***** ***** Note ***** ***** *****
+
+basic_alg1：每次移动前对全空间搜索，正确但耗时；
+basic_alg1: Before each diffusion, we search all the boundary points to find the minimal radius. Correct results but quite time-consuming: proportional to 4^g.
+
+alg2：每次寻找该级别最近两点，减小搜索范围，结果有误；结果不对称。
+alg2: Same idea but with limited searching space. Before each step, we find minimal radius only inside the given index range from the last level (g). Not even correct results, probability plots are not symmetric.
+
+alg3：几点调整
+1. 初始扩散半径固定为Length/4；
+2. 寻找最近两点时，若次近两点距离一致，则产生随机数放弃其一；
+3. 每次扩散后倒推确定？但边界往左右各扩一点。
+4. 每次扩散至下一级最近两点坐标差值恰为该级别最小距离时g++；
+alg3: Improvement based on alg2
+1. Accelerate the first diffusion with initial radius = Length / 4;
+2. While searching 2 nearest points, once we have the same distance, we keep one randomly;
+3. Modify the searching process, extra 2 points added front/behind the index range;
+4. Modify the condition for diffusion level: once the index gap equal to the unit @ g, then g+1;
+
+
+alg4：逐级扩散，起始边界g=0即三角形，粒子附着在边界后在考虑下一级边界，若扩散出旧边界则强制重回原点；结果不对称
+alg4: Diffusion but level-wise. Initial boundary = triangle (g=0). Once the particle is attached on the boundary, we consider the next level g. If they quit the old boundary, we restart the diffusion on the old boundary. Not even correct results, not symmetric.
+
+alg5：逐级扩散，起始边界g=0即三角形，粒子附着在边界后在考虑下一级边界，若扩散出旧边界则回到上一步；结果不对称
+alg5: Almost same as alg4, but once particles quit the old boundary, we return to the last position rather than the initial one on the boundary. Still not even correct and not symmetric.
+
+alg6：逐级扩散，但起始边界g=1即六角星，粒子附着边界后考虑下一级，若扩散出则考虑上一点；结果对称，但数值大小与alg1有出入；
+alg6: Improvement based on alg5. Initial boundary @ g=1. Return to the last position once outside. Symmetric results but not the same value with alg1.

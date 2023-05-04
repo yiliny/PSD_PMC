@@ -1,0 +1,19 @@
+set terminal postscript eps enhanced color font 'Helvetica,24'
+set output "pbb.eps" # Note, must write "setput" at first, otherwise there would be no data
+set xlabel "No. Segment"
+set ylabel "Probability"
+set title "Fractal Diffusion (Alg 3, N=10^6, g=5)"
+set border
+set yrange [-1e-4 : ]
+set xtics
+set ytics
+set size ratio 0.75
+
+
+dataf = "diff-sgm_pbb.txt"
+
+plot dataf using 1:3 title "" with lines lw 0.2 lc rgb 'black'
+
+
+
+set output
