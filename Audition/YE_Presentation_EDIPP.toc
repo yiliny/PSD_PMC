@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Curriculum Vitae}{2}{0}{1}
+\beamer@sectionintoc {2}{Internships}{5}{0}{2}
+\beamer@sectionintoc {3}{Thesis}{7}{0}{3}
+\beamer@sectionintoc {5}{Appendix}{13}{0}{4}
