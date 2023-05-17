@@ -1,42 +1,38 @@
-\frametitle{\tbf{Thesis Project}\\
-  \small{Probabilistic Approach to Diffusion-mediated Surface Phenomena}}
-
-
-\large
-\begin{comment}
-  \begin{itemize}
-    	\setlength{\itemsep}{6pt}
-%    \item Construct general model with Encounter-based approach
-    \item \tbf{Local Time} $\ell$ describes the general nature of surface phenomena: ``target-finding'' diffusion, activation, passivation, etc.   %How much time would one particle move near the complex surface?
-    \item Implement ``encounter-based approach'' in the complex media with special geometrical confinements;% for $P(\mathbf{x},\ell,t|\mathbf{x}_0)$
-  \item Study different mechanisms of surface reactions
-  %with generalized propagator $G_\Psi(\mathbf{x},t|\mathbf{x}_0) = \int \mrm{d} \ell \Psi(\ell) P(\mathbf{x},\ell,t|\mathbf{x}_0)$
-  by ``encouter-dependent reactivity'';
-  %\item Collective effect of multiple independently diffusing particles;
-  \item Identify experimental situations to validate;
-  \end{itemize}
-\end{comment}
+\frametitle{Brownian Motion near the Soft Surface \\ \textcolor {ChimieBlue}{$\circ $ Confined Brownian motion \& ElastoHydroDynamic (EHD) lift force}}
 
 
 
-	\begin{itemize}
-	    	\setlength{\itemsep}{6pt}
-		\item[$\bullet$] Boundary local time $\ell_t$ characterizes the number of encounters with the boundary
-		\item[$\bullet$] Surface reaction occurs when $\ell_t$ exceeds some threshold $\hat\ell$ characterized by $\Psi(\ell)$
-		\large
-		\begin{itemize}
-          \item[$\star$] standard surface reactions $\Psi(\ell) = q e^{-q\ell}$
-          \item[$\star$]  various surface reactions: arbitrary $\Psi(\ell)$
-        \end{itemize}
-		\item[$\bullet$] This approach was applied only in simple confinements like sphere.
-	\end{itemize}
+\tbf{There are \uwave{lower diffusion coefficients} near a rigid surface.}
 
 \begin{center}
-\includegraphics[height=3cm]{figs/pending_scheme.png}
-\end{center}
+\includegraphics[height=1.8cm]{plots/faucheux1994_page2.pdf}
+\fives
+\includegraphics[height=2.0cm]{plots/Lavaud2021fig.pdf}
+%\fives
+\ \
+\includegraphics[height=2.2cm]{plots/Lavaud2021_p2.pdf}
+\end{center} \\
+\scriptsize{L. Faucheux, A. Libchaber. \tit{Phys. Rev. E.} \tbf{1994}, \tit{49(6)}, 5158.} \\
+\scriptsize{M. Lavaud, et al. \tit{Phys. Rev. Res.} \tbf{2021}, \tit{3(3)}, L032011.}
 
-  %\blfootnote{Y. Zhou, et al. Comm. Math. Sci., 15, 237-259 (2017).}
-  %\blfootnote{Y. Lanoiselée, et al. Nature Commun. 9, 4398 (2018).}
-  \blfootnote{D. S. Grebenkov, Physical Review Letters 125, 078102 (2020)}
+
+\ \\
+
+\normalsize
+\tbf{Asymmetric deformation of soft walls leads to \uwave{a lift force}.} \\
+
+
+
+\begin{center}
+\includegraphics[height=2.0cm]{plots/soft-lubri.pdf}
+\fives
+\includegraphics[height=1.8cm]{plots/Zhang2020fig-left.pdf}
+%\fives
+\ \
+\includegraphics[height=2.1cm]{plots/Zhang2020_page3.pdf}
+\end{center}
+\scriptsize{J. Skotheim, L. Mahadevan. \tit{Phys. Rev. Lett.} \tbf{2004}, \tit{92}, 245509.} \\
+\scriptsize{Z. Zhang, et al. \tit{Phys. Rev. Lett.} \tbf{2020}, \tit{124(5)}, 054502.}
+
 
 

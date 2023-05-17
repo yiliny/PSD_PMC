@@ -158,7 +158,7 @@
 \hline \\
 \bigskip
 \Large \tbf{Probabilistic Approach to Diffusion-Mediated Surface Phenomena}}
-\author[Y. YE]{\large Director: \tbf{Denis GREBENKOV} \\
+\author[Yilin YE]{\large Director: \tbf{Denis GREBENKOV} \\
 \normalsize
 Laboratoire PMC, Ecole Polytechnique}
 
@@ -266,8 +266,11 @@ Laboratoire PMC, Ecole Polytechnique}
 
 
 \section{Thesis}
+\ssc{Probabilistic Approach to Diffusion-Mediated Surface Phenomena}
 \frame{
-	\frametitle{\tbf{Thesis Project - Motivation}}
+	\frametitle{\tbf{Thesis Project - Motivation} 
+	%\\  \small{Probabilistic Approach to Diffusion-Mediated Surface Phenomena}
+	}
 	%%%
 	\begin{minipage}{0.52\linewidth}
 	\begin{center}
@@ -285,7 +288,7 @@ Laboratoire PMC, Ecole Polytechnique}
 
 	\begin{center}
 	\Large
-	\tbf{How does the complicated environment \\ affect diffusion-controlled reactions?} 
+	\tbf{How does the complicated environment affect \\ diffusion-mediated surface phenomena?} 
 	\end{center}
 	
 	\blfootnote{B. Augner, and D. Bothe. arXiv:1911.13030, \tbf{2019}}
@@ -299,7 +302,7 @@ Laboratoire PMC, Ecole Polytechnique}
 
 \begin{frame}[fragile]
   \frametitle{\tbf{Thesis Project}\\
-  \small{Probabilistic Approach to Diffusion-mediated Surface Phenomena}}
+\small{Encounter-based approach} }
 
 
 \large
@@ -310,7 +313,7 @@ Laboratoire PMC, Ecole Polytechnique}
     \item \tbf{Local Time} $\ell$ describes the general nature of surface phenomena: ``target-finding'' diffusion, activation, passivation, etc.   %How much time would one particle move near the complex surface?
     \item Implement ``encounter-based approach'' in the complex media with special geometrical confinements;% for $P(\mathbf{x},\ell,t|\mathbf{x}_0)$
   \item Study different mechanisms of surface reactions 
-  %with generalized propagator $G_\Psi(\mathbf{x},t|\mathbf{x}_0) = \int \mrm{d} \ell \Psi(\ell) P(\mathbf{x},\ell,t|\mathbf{x}_0)$ 
+  %with generalized propagator 
   by ``encouter-dependent reactivity''; 
   %\item Collective effect of multiple independently diffusing particles;
   \item Identify experimental situations to validate;
@@ -318,26 +321,28 @@ Laboratoire PMC, Ecole Polytechnique}
 \end{comment}
 
 
+\begin{center}
+\includegraphics[height=3cm]{figs/encounter3.png}
+\end{center}
+
 
 	\begin{itemize}
 	    	\setlength{\itemsep}{6pt}
-		\item[$\bullet$] Boundary local time $\ell_t$ characterizes the number of encounters with the boundary
-		\item[$\bullet$] Surface reaction occurs when $\ell_t$ exceeds some threshold $\hat\ell$ characterized by $\Psi(\ell)$
-		\large
+		\item[$\bullet$] \tbf{Local time $\ell_t$ }characterizes the number of encounters with the boundary
+		\item[$\bullet$] Surface reaction occurs when $\ell_t$ exceeds a random threshold $\hat\ell$ \\ characterized by $\Psi(\ell) = \mathbb{P} \llc \ell < \hat{\ell} \rrc$:
 		\begin{itemize}
-          \item[$\star$] standard surface reactions $\Psi(\ell) = q e^{-q\ell}$
-          \item[$\star$]  various surface reactions: arbitrary $\Psi(\ell)$
+\large
+          \item[$\star$] standard surface reactions with constant reactivity $q$: $\Psi(\ell) = e^{-q\ell}$
+          \item[$\star$] various surface reactions (activation, passivation, etc): \tbf{arbitrary} $\Psi(\ell)$
         \end{itemize}
-		\item[$\bullet$] This approach was applied only in simple confinements like sphere.
+		\item[$\bullet$] This approach was only applied in simple confinements like sphere.
 	\end{itemize}
 
-\begin{center}
-\includegraphics[height=3cm]{figs/pending_scheme.png}
-\end{center}
+
   
   %\blfootnote{Y. Zhou, et al. Comm. Math. Sci., 15, 237-259 (2017).}
   %\blfootnote{Y. Lanoiselée, et al. Nature Commun. 9, 4398 (2018).}
-  \blfootnote{D. S. Grebenkov, Physical Review Letters 125, 078102 (2020)}
+  \blfootnote{D. S. Grebenkov, \tit{Physical Review Letters}, \tbf{2020}, \tit{125}, 078102}
   
   
 \end{frame}
@@ -346,12 +351,14 @@ Laboratoire PMC, Ecole Polytechnique}
 
 
 
-\frame{
-	\frametitle{\tbf{Thesis Project - Aims} \\
-	  \small{Probabilistic Approach to Diffusion-mediated Surface Phenomena}}
+\begin{frame}[fragile]
+	\frametitle{\tbf{Thesis Project - Aims} 
+	%\\  \small{Probabilistic Approach to Diffusion-Mediated Surface Phenomena}
+	}
 
 	
 	\large
+\begin{comment}
   \begin{itemize}
   	\setlength{\itemsep}{8pt}
 %  \item Efficient numerical methods towards different cases;
@@ -360,11 +367,28 @@ Laboratoire PMC, Ecole Polytechnique}
   \item Analyze reversible chemical reactions by generalized propagator $G_\Psi(\mathbf{x},t|\mathbf{x}_0) = \int \mrm{d} \ell \Psi(\ell) P(\mathbf{x},\ell,t|\mathbf{x}_0)$;
   \item Popularize 2D model towards 3D model for simulations of real cases;
   \end{itemize}
-  
+
+\end{comment}  
+
+
+
   \begin{center}
   \includegraphics[height=3.6cm]{figs/PhD_project_final_figs.pdf}
   \end{center}
-}
+
+
+
+\begin{itemize}
+  	\setlength{\itemsep}{8pt}
+  \item[$\bullet$] Efficient numerical implementation of the ``encounter-based approach'' in complex media
+  \item[$\bullet$] Understanding of respective roles of complex environment and various surface reaction mechanisms
+  \item[$\bullet$] Identifying experimental settings for comparisons
+  \item[$\bullet$] Search for new applications of this approach in chemistry and biology
+\end{itemize}
+  
+  
+  
+\end{frame}
 
 
 
@@ -387,7 +411,7 @@ Laboratoire PMC, Ecole Polytechnique}
     	%%%
     \begin{minipage}{0.48\linewidth}
         $$ r = \mrm{constant} \fives \tta_i = \mrm{ran}(0,2\pi) $$
-        $$ \Dlt x = r \cos\tta_i \fives \Dlt y = r \sin\tta_i $$
+        $$ \Dlt x_i = r \cos\tta_i \fives \Dlt y_i = r \sin\tta_i $$
     \begin{center}
 		\includegraphics[height=6.4cm]{figs/diffuse_req.png}
     \end{center}
@@ -409,21 +433,28 @@ Laboratoire PMC, Ecole Polytechnique}
 $$ r_i \neq \mrm{constant} \fives \tta_i = \mrm{ran}(0,2\pi) $$
 %$$ \Dlt x_i = r \cos\tta_i \fives \Dlt y_i = r \sin\tta_i $$
     \begin{center}
-        Find maximal radius and Jump uniformly. \\
+        Find maximal radius and Jump uniformly \\
     	\includegraphics[height=6cm]{figs/GAFRW_g4.png}
     \end{center}
     \end{minipage}
     	%%%
     \begin{minipage}{0.4\linewidth}
     \begin{center}
-    Compute distribution probability \\ on each segment:
+    Compute hitting probability \\ on each segment:
     	%\includegraphics[height=3.6cm]{figs/pbbg2v3_EDIPP.eps}
-	    \includegraphics[height=3.2cm]{figs/pbbg3v3_EDIPP.eps}
+	    %\includegraphics[height=3.2cm]{figs/pbbg3v3_EDIPP.eps}
     	\includegraphics[height=3.2cm]{figs/pbbg4v3_EDIPP.eps}
     \end{center}
+    
+    \pause
+    \begin{itemize}
+    \item[$\bullet$] Incorporation of reflections %of particles on the boundary
+  \item[$\bullet$] Computation of local time $\ell_t$ %by reflection;
+  \item[$\bullet$] Implementation of chemical reactions characterized by $\Psi(\ell)$
+\end{itemize}
     \end{minipage}
     
-\blfootnote{D. S. Grebenkov, et al. Physical Review E, 71(5), 056121 (2005).}
+\blfootnote{D. S. Grebenkov, et al. \tit{Physical Review E}, \tbf{2005}, \tit{71}(5), 056121}
 }
 
 
@@ -434,16 +465,18 @@ $$ r_i \neq \mrm{constant} \fives \tta_i = \mrm{ran}(0,2\pi) $$
 \section{}
 \begin{frame}[noframenumbering]
 \thispagestyle{empty}
+\frametitle{\tbf{Probabilistic Approach to Diffusion-Mediated Surface Phenomena}}
 	\begin{center}
+	\includegraphics[height=4.5cm]{figs/PhD_project_final_figs.pdf} \\[6ex]
 	\textbf{\Huge{Thanks for your attention!}} \\[6ex]
-	  \includegraphics[height=4.5cm]{figs/PhD_project_final_figs.pdf}
+	  
 	\end{center}
 \end{frame}
 
-
-
-
-
+%%%%% %%%%% %%%%% %%%%% %%%%% %%%%% 
+%%%%% %%%%% %%%%% %%%%% %%%%% %%%%% 
+%%%%% %%%%% %%%%% %%%%% %%%%% %%%%% 
+%%%%% %%%%% %%%%% %%%%% %%%%% %%%%% 
 
 
 
@@ -452,15 +485,166 @@ $$ r_i \neq \mrm{constant} \fives \tta_i = \mrm{ran}(0,2\pi) $$
 
 
 \section{Appendix}
+
+
+\ssc{Internship L3S2 @ LCPMR}
+\begin{frame}[noframenumbering]
+\frametitle{Simulation of Vibrational ICD on Model Systems with Reduced Dimensions}
+
+	%%%
+	\begin{minipage}{0.24\linewidth}
+	\begin{center}
+		\includegraphics[height = 2cm]{figs/vibicd1.png}
+	\end{center}
+	\end{minipage}
+	%%%
+	\begin{minipage}{0.75\linewidth}
+	\begin{center}
+		\includegraphics[height = 3.6cm]{figs/vibicd2.png}
+	\end{center}
+	\end{minipage}
+	
+%	\bigskip
+\fives
+		\includegraphics[height = 4cm]{figs/fano3.png}
+		\fives
+		\includegraphics[height = 4cm]{figs/fano0925.png}
+
+\end{frame}
+
+
+
+
+
+\ssc{Internship @ Hunan University}
+\begin{frame}[noframenumbering]
+\frametitle{Study of $\eta^{(\prime)} \to \pi^+ \pi^- \gamma^{(\ast)}$ Decays by Effective Field Theory}
+
+\begin{figure}[htbp]
+	\centering
+	\subfigure{\label{Feynman1} 
+	\includegraphics[width=0.2\textwidth]{feynmanplot/plot1.pdf}} \qquad
+	\subfigure{\label{Feynman2} 
+	\includegraphics[width=0.2\textwidth]{feynmanplot/plot2.pdf}} \qquad
+	\subfigure{\label{Feynman3} 
+	\includegraphics[width=0.2\textwidth]{feynmanplot/plot3.pdf}} \\%[0ex]
+	\subfigure{\label{Feynman4} 
+	\includegraphics[width=0.2\textwidth]{feynmanplot/plot4.pdf}} \qquad
+	\subfigure{\label{Feynman5} 
+	\includegraphics[width=0.24\textwidth]{feynmanplot/plot5.pdf}}	\qquad
+	\subfigure{\label{Feynman6} \includegraphics[width=0.24\textwidth]{feynmanplot/plot6.pdf}}
+\end{figure}
+
+
+%%%
+\begin{minipage}{0.45\linewidth}
+$$ \agn{
+\mathcal{L}^\mathrm{GB}_{(2)} &\equiv \mathcal{L}^\mathrm{\chi PT}_{(2)} = \frac{F^2}{4} \left\langle u_\mu u^\mu + \chi_+ \right\rangle \\
+\mathcal{L}^\mathrm{GB}_{(4)} &\simeq \frac{i N_C \sqrt{2}}{12 \pi^2 F^3} \epsilon_{\mu\nu\rho\sigma} \left\langle \partial^\mu \Phi \partial^\nu \Phi \partial^\rho \Phi v^\sigma \right\rangle \\ %+ \cdots
+\mathcal{L}^\mathrm{V}_\mathrm{kin} &= - \frac{1}{2} \left\langle \nabla^\lambda V_{\lambda\mu} \nabla_\nu V^{\nu\mu} \right\rangle \\ &\fives + \frac{1}{4} M_V^2 \left\langle V_{\mu\nu} V^{\mu\nu} \right\rangle
+} $$
+
+\end{minipage}
+%%%
+\begin{minipage}{0.54\linewidth}
+	\begin{center}
+		\includegraphics[width = 6cm]{figs/spec_pp18_290.png}
+	\end{center}
+\end{minipage}
+
+
+\end{frame}
+
+
+
+
+
+\ssc{Internship M1S2 @ LOMA}
+\import{}{intro_EDIPP.tex}
+
+
+
+
+
+\begin{frame}[noframenumbering]{Brownian Motion near the Soft Surface \\
+\textcolor{ChimieBlue}{$\odot$ EHD interactions \& Modified fluctuation-dissipation relation}}
+
+
+\tbf{Equations of motion (EOM) are non-linear coupled.}  
+\ \\
+
+%%%
+\begin{minipage}{0.4\linewidth}
+\begin{center}
+\includegraphics[height=2.2cm]{figs/BEHD_JPS.pdf}
+\end{center}
+\end{minipage}
+%%%
+\begin{minipage}{0.55\linewidth}
+\footnotesize
+$$ \agn{
+\textcolor{red}{\ddot{X}_\mrm{G}} + \frac{2\textcolor{black}{\veps} \textcolor{cyan}{\xi}}{3} \frac{\blendcolors*{!60}\textcolor{red}{\dot{X}_\mrm{G}}}{\sqrt{{\blendcolors*{!60}\textcolor{orange}{\Delta}}}} + \frac{\textcolor{violet}{\kappa} \textcolor{black}{\veps} \textcolor{cyan}{\xi}}{6} \left[ \frac{19}{4} \frac{\dot{\blendcolors*{!60}\textcolor{orange}{\Delta}} \blendcolors*{!60}\textcolor{red}{\dot{X}_\mrm{G}}}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{7/2}} - \frac{\dot{\blendcolors*{!60}\textcolor{orange}{\Delta}} \dot{\blendcolors*{!60}\textcolor{blue}{\Theta}}}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{7/2}} + \frac{1}{2} \frac{\textcolor{blue}{\ddot{\blendcolors*{!60}\textcolor{blue}{\Theta}}} - \textcolor{red}{\ddot{X}_\mrm{G}}}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{5/2}} \right] &= 0 \\
+\ddot{{\textcolor{orange}{\Delta}}} + \textcolor{cyan}{\xi} \frac{\dot{{\blendcolors*{!60}\textcolor{orange}{\Delta}}}}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{3/2}} + \frac{\textcolor{violet}{\kappa} \textcolor{cyan}{\xi}}{4} \left[ 21 \frac{\dot{{\blendcolors*{!60}\textcolor{orange}{\Delta}}}^2}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{9/2}} - \frac{(\dot{\blendcolors*{!60}\textcolor{blue}{\Theta}} - \blendcolors*{!60}\textcolor{red}{\dot{X}_\mrm{G}})^2}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{7/2}} - \frac{15}{2} \frac{\ddot{{\textcolor{orange}{\Delta}}}}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{7/2}} \right] &= 0 \\
+\textcolor{blue}{\ddot{\Theta}} + \frac{4\textcolor{black}{\veps}\textcolor{cyan}{\xi}}{3} \frac{\dot{\blendcolors*{!60}\textcolor{blue}{\Theta}}}{\sqrt{{\blendcolors*{!60}\textcolor{orange}{\Delta}}}} + \frac{\textcolor{violet}{\kappa} \textcolor{black}{\veps} \textcolor{cyan}{\xi}}{3} \left[ \frac{19}{4} \frac{\dot{\blendcolors*{!60}\textcolor{orange}{\Delta}} \dot{\blendcolors*{!60}\textcolor{blue}{\Theta}}}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{7/2}} - \frac{\dot{\blendcolors*{!60}\textcolor{orange}{\Delta}} \blendcolors*{!60}\textcolor{red}{\dot{X}_\mrm{G}}}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{7/2}} + \frac{1}{2} \frac{\textcolor{red}{\ddot{X}_\mrm{G}} - \textcolor{blue}{\ddot{\Theta}}}{{\blendcolors*{!60}\textcolor{orange}{\Delta}}^{5/2}} \right] &= 0 
+} $$
+\end{minipage}
+
+\scriptsize{T. Salez, and L. Mahadevan, \tit{J. Fluid Mech.} \tbf{2015}, \tit{779}, 181-196}
+
+
+\ \\ 
+
+
+\normalsize
+%\tbf{Equations of motion are non-linear coupled.}  
+\tbf{Add random force into EOM for \uwave{modified fluctuation-dissipation relation}.}
+\small
+$$\dot{v} + f({\blendcolors*{!60}\textcolor{orange}{\Delta}}) \ v + \textcolor{violet}{\kappa} \ g(\dot{v},v,{\blendcolors*{!60}\textcolor{orange}{\Delta}}) = 0 
+\tens \to \tens
+\dot{v} = - \gamma_{\mathrm{eff}} \  v + \textcolor{}{\dlt F}/ M 
+$$
+%$$ \dot{v} = - \textcolor{}{\gma} v + \textcolor{}{\dlt F}/m $$
+
+%\ \\ 
+
+\small
+\begin{center}
+\begin{tikzpicture}[node distance=10pt]
+  \node[] (vadd) {$v_i = v_{i\textcolor{blue}{0}} + \textcolor{violet}{\kappa} \cdot v_{i\textcolor{red}{1}}$};
+  \node[, right=of vadd] (vcrr) {$\lla v_{i\textcolor{blue}{0}} v_{i\textcolor{red}{1}} \rra (t,\textcolor{violet}{\kappa})$};
+  \node[, below=1pt of vcrr] (gma) {$\gma_{i} = \gma_{i\textcolor{blue}{0}} ({\blendcolors*{!90}\textcolor{orange}{\Delta}}) + \textcolor{violet}{\kappa} \cdot \gma_{i\textcolor{red}{1}} ({\blendcolors*{!90}\textcolor{orange}{\Delta}})$}; % draw -> \boxed{}
+  \node[, below=1pt of gma] (fcrr) {$\lla \delta F_{i\textcolor{blue}{0}} \delta F_{i\textcolor{red}{1}} \rra (\textcolor{violet}{\kappa})$};
+  \node[, left=of fcrr] (fadd) {$\delta F_i = \delta F_{i\textcolor{blue}{0}} + \textcolor{violet}{\kappa} \cdot \delta F_{i\textcolor{red}{1}}$};
+  \node[, right=15 pt of gma] (noise) {noise correlator amplitude }  
+  
+  \draw[->] (vadd)  -- (vcrr);
+  \draw[->] (fadd) -- (fcrr);
+  \draw[->] (vcrr) -- (noise);
+  \draw[->] (fcrr) -- (noise);
+  \draw[->] (gma) -- (noise);
+\end{tikzpicture}
+\end{center}
+%\normalsize
+$$ \boxed{ \lla \dlt F_i(\tau_1) \dlt F_i(\tau_2) \rra \propto 2 k_\mrm{B} T \ m_i \  \gma_{i\textcolor{blue}{0}} \ \dlt(\tau_1 - \tau_2) \cdot \lls 1 - \textcolor{violet}{\kappa} \cdot \frac{\gma_{i\textcolor{red}{1}} ({\blendcolors*{!90}\textcolor{orange}{\Delta}}) }{\gma_{i\textcolor{blue}{0}} ({\blendcolors*{!90}\textcolor{orange}{\Delta}})} \rrs } $$
+
+
+
+\end{frame}
+
+
+
+
+
+\ssc{Internship M2S2 @ PMC}
 \begin{frame}[noframenumbering]
 	\frametitle{}
 
-	\begin{minipage}{0.65\linewidth}
+	\begin{minipage}{0.6\linewidth}
 		\includegraphics[height=2.5cm]{figs/no_ana.png}
 	\end{minipage}
 	%%%
-	\begin{minipage}{0.33\linewidth}
-		\Huge $$ P \llp \vdots \rrp \neq \sum P(\textcolor{red}{|}) $$
+	\begin{minipage}{0.39\linewidth}
+		\Huge $$ P \llp \begin{array}{c} | \\|\end{array}\rrp \neq \sum P(\textcolor{red}{|}) $$
 	\end{minipage}
 	\begin{center}
     	\includegraphics[height=6cm]{figs/pbb_g2_EDIPP.eps}
@@ -499,8 +683,10 @@ $$ r_i \neq \mrm{constant} \fives \tta_i = \mrm{ran}(0,2\pi) $$
 	\frametitle{\tbf{Local Time} $\ell$}
 	
   %%%
-  \begin{minipage}{0.5\linewidth}
+  \begin{minipage}{0.45\linewidth}
   $$ \vec{x}_{k+1} = \vec{x}_k + \rho(\cos\tta_, \sin\tta_k) $$
+  
+  $$ \rho = 2\veps $$
   
   $$ \tau = \frac{\dlt^2}{4D} \tens t_{k+1} = t_k + \tau $$
   
@@ -508,8 +694,8 @@ $$ r_i \neq \mrm{constant} \fives \tta_i = \mrm{ran}(0,2\pi) $$
   
   \end{minipage}
    %%%
-  \begin{minipage}{0.4\linewidth}
-  	\includegraphics[height=4.5cm]{figs/simu_reflect.pdf}
+  \begin{minipage}{0.5\linewidth}
+  	\includegraphics[height=5cm]{figs/simu_reflect.pdf}
   \end{minipage}
 	
 \end{frame}
@@ -537,11 +723,77 @@ $$ r_i \neq \mrm{constant} \fives \tta_i = \mrm{ran}(0,2\pi) $$
 
 
 \begin{frame}[noframenumbering]
+\frametitle{Boundary local time}
+
+$$ \mrm{d} \mathbf{X}_t = \frac{D}{k_\mrm{B} T} \mathbf{F}(\mathbf{X}_t) \mrm{d} t + \sqrt{2D} \mrm{d} \mathbf{W}_t $$
+$\mathbf{F}(\mathbf{x})$ should be zero inside $\Omg$, except for a very thin boundary layer of width $a$, in which $\mathbf{F}(\mathbf{x})$ should force the particle to move away from the boundary back to the interior.
+$$ \frac{\mathbf{F}(\mathbf{x})}{k_\mrm{B} T} = \frac{1}{a} \mathbf{n}(\mathbf{x}) \mathbb{I}_{\partial \Omg_a} (\mathbf{x}) $$
+
+$$ \ell^a_t = \frac{D}{a} \int_0^t \mrm{d} t' \mathbb{I}_{\partial \Omg_a} (\mathbf{X}_{t'}) $$
+Langevin equation takes the form
+$$ \mrm{d} \mathbf{X}_t = \mathbf{n}(\mathbf{x}) \mrm{d} \ell^a_t + \sqrt{2D} \mrm{d} \mathbf{W}_t $$
+$\frac{a}{D} \ell^a_t$ is the residence time inside the boundary layer $\partial \Omg_a$ up to time $t$.
+$$ \ell_t = \lim_{a\to0} \ell^a_t $$
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[noframenumbering]
+The boundary local time $\ell_t$ can also be related to the number $\mathcal{N}^a_t$ of crossings of the boundary layer $\partial \Omg_a$.
+$$ \ell_t = \lim_{a\to0} a \mathcal{N}^a_t $
+
+	\begin{center}
+	\includegraphics[height=6.0cm]{figs/grebenkov_SM_S1.pdf}
+	\end{center}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[noframenumbering]
+
+\large
+
+On the partially reactive region $\partial \Omg_R$
+$$ -D \partial_n c(\mathbf{x},t) = \kpa_0 c(\mathbf{x},t) $$
+with $\kpa_0$ is the reactivity of the region.
+
+
+
+If the particle attempts to react independently on each encounter with probability 
+$$ p \simeq a \kpa_0 / D \ll 1 $$
+the probability of no surface reaction up to the $n$-th encounter is 
+$$ 1 - \sum_{k=1}^n p(1-p)^{k-1} = (1-p)^n \simeq e^{-p n} \simeq e^{-q \ell} $$
+where $q = \kpa_0/D$, $\ell = n a$.
+
+\bigskip
+
+\begin{itemize}
+  \item Full propagator: $P(\mathbf{x},\ell,t|\mathbf{x}_0) $
+  \item Conventional propagator: $G_\Psi(\mathbf{x},t|\mathbf{x}_0) = \int \mrm{d} \ell \Psi(\ell) P(\mathbf{x},\ell,t|\mathbf{x}_0) $
+\end{itemize}
+
+
+$$ \Psi(\ell) = \mathbb{P} \llc \ell < \hat{\ell} \rrc = \int_\ell^\infty \mrm{d} \ell^\prime \psi(\ell^\prime) = e^{-q \ell} $$
 
 
 
 
 \end{frame}
+
+
+
+
+
+
+
+
 
 
 

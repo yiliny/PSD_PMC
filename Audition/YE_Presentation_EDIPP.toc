@@ -1,4 +1,9 @@
 \beamer@sectionintoc {1}{Curriculum Vitae}{2}{0}{1}
 \beamer@sectionintoc {2}{Internships}{5}{0}{2}
 \beamer@sectionintoc {3}{Thesis}{7}{0}{3}
-\beamer@sectionintoc {5}{Appendix}{13}{0}{4}
+\beamer@subsectionintoc {3}{1}{Probabilistic Approach to Diffusion-Mediated Surface Phenomena}{7}{0}{3}
+\beamer@sectionintoc {5}{Appendix}{14}{0}{4}
+\beamer@subsectionintoc {5}{1}{Internship L3S2 @ LCPMR}{14}{0}{4}
+\beamer@subsectionintoc {5}{2}{Internship @ Hunan University}{15}{0}{4}
+\beamer@subsectionintoc {5}{3}{Internship M1S2 @ LOMA}{16}{0}{4}
+\beamer@subsectionintoc {5}{4}{Internship M2S2 @ PMC}{18}{0}{4}
