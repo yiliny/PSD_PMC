@@ -1,0 +1,19 @@
+3 ! "polygon_shape"
+
+3 ! "Generation_max"
+
+10 ! "num_particle"
+
+1.00d2 ! "Length"
+
+3 ! "alpha_angle_ratio"
+
+-1 ! "direct" = direction
+
+1.0d-1 ! "thickness" = épaisseur de couche
+
+2.0d0 ! "rho_ratio" = \rho / \epsilon
+
+1.0d0 ! "q_rect"
+
+1.0d0 ! "diff_coef"
