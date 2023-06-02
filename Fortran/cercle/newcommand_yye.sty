@@ -1,0 +1,222 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{extarrows} %用于调整等号长度
+
+
+
+
+
+\newcommand{\tenspace}{\ \ \ \ \ \ \ \ \ \ }
+\newcommand{\tens}{\ \ \ \ \ \ \ \ \ \ }
+\newcommand{\fivespace}{\ \ \ \ \ }
+\newcommand{\fives}{\ \ \ \ \ }
+\newcommand{\ttt}{\tens\to\tens}
+
+
+\newcommand{\sct}{\section}
+\newcommand{\ssc}{\subsection}
+\newcommand{\sss}{\subsubsection}
+\newcommand{\parag}{\paragraph}
+\newcommand{\prg}{\paragraph}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bgn}{\begin{align}}
+\newcommand{\ggn}{\end{align}}
+%\newcommand{\egnn}{\end{align}}
+\newcommand{\eq}[1]{\begin{equation} #1 \end{equation}}
+\newcommand{\agn}[1]{\begin{align} #1 \end{align}}
+\newcommand{\tlag}[1]{\tag{#1} \label{#1}}
+\newcommand{\itmz}[1]{\begin{itemize} #1 \end{itemize}}
+\newcommand{\enmr}[1]{\begin{enumerate} #1 \end{enumerate}}
+
+
+%%color
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+%\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\newcommand{\md}{\mrm{d}}
+\newcommand{\bb}[1]{\mathbb{#1}} %% 空心大写字母
+\newcommand{\bbf}[1]{\mathbf{#1}} %% 黑体向量
+\newcommand{\mbf}[1]{\mathbf{#1}} %% 黑体向量
+\newcommand{\cal}[1]{\mathcal{#1}} 
+\newcommand{\scr}[1]{\mathscr{#1}} %% 花体字母
+\newcommand{\wtd}[1]{\widetilde{#1}}
+\newcommand{\uu}[1]{\underline{#1}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tbf}[1]{\textbf{#1}}
+
+
+\newcommand{\udb}[2]{\underbrace{#1}_{\mathrm{#2}}}
+\newcommand{\pder}[2][]{\frac{\partial#1}{\partial#2}}
+\newcommand{\pdlt}[2]{\frac{\delta #1}{\delta#2}}
+\newcommand{\invs}[1]{\frac{1}{#1}}
+\newcommand{\demi}{\frac{1}{2}}
+\newcommand{\kbt}{k_{\mrm{B}} T}
+\newcommand{\dptr}{{(2\pi)^3}}
+\newcommand{\champ}[1]{\int \frac{\mathrm{d}^3 #1}{(2\pi)^3}}
+\newcommand{\champf}[1]{\int \frac{\mathrm{d}^4 #1}{(2\pi)^4}}
+\newcommand{\gauss}[3]{\frac{1}{\sqrt{2\pi {#3}^2}} \exp \lls - \frac{(#1 - #2)^2}{2 {#3}^2}} % x, \mu, \sigma
+\newcommand{\rinv}[1]{\frac{1}{\sqrt{#1}}}
+\newcommand{\fr}[2]{\frac{#1}{#2}}
+\newcommand{\sfr}[2]{\sqrt{\frac{#1}{#2}}}
+
+
+\newcommand{\llp}{\left(}
+\newcommand{\rrp}{\right)}
+\newcommand{\lls}{\left[}
+\newcommand{\rrs}{\right]}
+\newcommand{\llc}{\left\{}
+\newcommand{\rrc}{\right\}}
+\newcommand{\lld}{\left.}
+\newcommand{\rrd}{\right.}
+\newcommand{\lla}{\left\langle}
+\newcommand{\rra}{\right\rangle}
+\newcommand{\llang}{\left\langle}
+\newcommand{\rrang}{\right\rangle}
+\newcommand{\llv}{\left\vert}
+\newcommand{\rrv}{\right\vert}
+\newcommand{\le}{\leqslant}
+\newcommand{\ge}{\geqslant}
+\newcommand{\defeq}{\xlongequal[]{\mathrm{def}}}
+\newcommand{\dgg}{{\dagger}}
+\newcommand{\pto}{\propto}
+\newcommand{\Raw}{\Rightarrow}
+\newcommand{\lraw}{\leftrightarrow}
+\newcommand{\nbl}{\nabla}
+
+
+\newcommand{\al}{\alpha}
+%\newcommand{\a}{\alpha}
+\newcommand{\bt}{\beta}
+%\newcommand{\b}{\beta}
+\newcommand{\ab}{{\alpha\beta}}
+\newcommand{\Dlt}{\Delta}
+\newcommand{\D}{\Delta}
+\newcommand{\dlt}{\delta}
+%\newcommand{\d}{\delta}
+\newcommand{\eps}{\epsilon}
+\newcommand{\e}{\epsilon}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\Gma}{\Gamma}
+%\newcommand{\G}{\Gamma} % Note = \r
+\newcommand{\gma}{\gamma}
+\newcommand{\g}{\gamma}
+\newcommand{\kpa}{\kappa}
+\newcommand{\k}{\kappa}
+\newcommand{\kxi}{{\kappa\xi}}
+\newcommand{\kxe}{{\kappa\xi\epsilon}}
+\newcommand{\lmd}{\lambda}
+%\newcommand{\l}{\lambda}
+\newcommand{\Lmd}{\Lambda}
+%\newcommand{\L}{\Lambda}
+\newcommand{\m}{\mu}
+\newcommand{\n}{\nu}
+\newcommand{\mnu}{{\mu\nu}}
+\newcommand{\omg}{\omega}
+\newcommand{\p}{\pi}
+%\newcommand{\r}{\rho}
+\newcommand{\w}{\omega}
+\newcommand{\Omg}{\Omega}
+\newcommand{\vph}{\varphi}
+\newcommand{\vphi}{\varphi}
+\newcommand{\sgm}{\sigma}
+\newcommand{\s}{\sigma}
+\newcommand{\Sgm}{\Sigma}
+\newcommand{\S}{\Sigma}
+\newcommand{\Tta}{\Theta}
+\newcommand{\T}{\Theta}
+\newcommand{\tta}{\theta}
+%\newcommand{\t}{\theta}
+%\newcommand{\x}{\xi}
+%\newcommand{\z}{\zeta}
+
+
+
+\newcommand{\eqs}{{equations}}
+\newcommand{\Eqs}{{Equations}}
+\newcommand{\eqt}{equation}
+\newcommand{\Eqt}{Equation}
+\newcommand{\phys}{{physics}}
+\newcommand{\Phys}{{Physics}}
+\newcommand{\stat}{{statistical}}
+\newcommand{\Stat}{{Statistical}}
+\newcommand{\LE}{{Langevin equation}}
+\newcommand{\FPE}{{Fokker-Planck equation}}
+\newcommand{\fluc}{{fluctuation}}
+\newcommand{\Fluc}{{Fluctuation}}
+\newcommand{\diss}{{dissipation}}
+\newcommand{\Diss}{{Dissipation}}
+\newcommand{\fcn}{{function}}
+\newcommand{\Fcn}{{Function}}
+\newcommand{\fcns}{{functions}}
+\newcommand{\Fcns}{{Functions}}
+\newcommand{\pbb}{{probability}}
+\newcommand{\Pbb}{{Probability}}
+\newcommand{\dist}{{distribution}}
+\newcommand{\Dist}{{Distribution}}
+\newcommand{\exm}{{example}}
+\newcommand{\Exm}{\tbf{\uu{Example}}}
+\newcommand{\exx}{{exercise}}
+\newcommand{\Exx}{\tbf{\uu{Exercise}}}
+\newcommand{\QQ}{\tbf{\uu{Question}}}
+\newcommand{\Ans}{\tbf{\uu{Answer}}}
+\newcommand{\Prf}{\tbf{\uu{Proof}}}
+\newcommand{\rlt}{{relation}}
+\newcommand{\Rlt}{{Relation}}
+\newcommand{\stoc}{{stochastic}}
+\newcommand{\Stoc}{{Stochastic}}
+\newcommand{\mst}{{master}}
+\newcommand{\Mst}{{Master}}
+\newcommand{\eqlb}{equilibrium}
+\newcommand{\Eqlb}{Equilibrium}
+\newcommand{\ooeq}{out-of-equilibrium}
+\newcommand{\Ooeq}{Out-of-equilibrium}
+\newcommand{\noeq}{non-equilibrium}
+\newcommand{\Noeq}{Non-equilibrium}
+\newcommand{\prcs}{process}
+\newcommand{\Prcs}{Process}
+\newcommand{\intdc}{introduction}
+\newcommand{\Intdc}{Introduction}
+\newcommand{\nmlz}{normalization}
+\newcommand{\Nmlz}{Normalization}
+\newcommand{\rnmlz}{renormalization}
+\newcommand{\Rnmlz}{Renormalization}
+\newcommand{\phnms}{phenomena}
+\newcommand{\Phnms}{Phenomena}
+\newcommand{\phnm}{phenomenon}
+\newcommand{\Phnm}{Phenomenon}
+\newcommand{\coef}{coefficient}
+\newcommand{\traj}{trajectory}
+\newcommand{\trajs}{trajectories}
+\newcommand{\ppt}{property}
+\newcommand{\ppts}{properties}
+\newcommand{\tmp}{temperature}
+\newcommand{\Tmp}{Temperature}
+\newcommand{\blzm}{Boltzmann}
+\newcommand{\cst}{constant}
+\newcommand{\pmt}{parameter}
+\newcommand{\bc}{boundary condition}
+\newcommand{\BC}{Boundary Condition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

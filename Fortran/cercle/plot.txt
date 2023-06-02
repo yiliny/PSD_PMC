@@ -1,0 +1,34 @@
+#set term pdfcairo size 80,80 
+#set output "shape.pdf" # Note, must write "setput" at first, otherwise there would be no data
+set terminal postscript eps enhanced color font 'Helvetica,24'
+set output "shape.eps" # Note, must write "setput" at first, otherwise there would be no data
+set xlabel ""
+set ylabel ""
+set title ""
+unset border
+unset xtics
+unset ytics
+#set size square
+set size ratio 1.0 ## Do not understand, but w/o this ratio, weird figure given 
+
+
+data_boundary = "cc-coord.txt"
+data_traj = "donnees.txt"
+data_final = "cc-particle_final.txt"
+#data_traj = "cc-particle_traj.txt"
+
+
+ 
+plot data_boundary using 1:2 title "" with lines lw 0.8 lc rgb 'grey',\
+data_traj using 1:2 title "" with lines lw 1.5 lc rgb '#6a3d9a',\
+data_traj using 1:2 title "" with points ls 6 lc rgb 'red',\
+data_final using 1:2 title "" with points ls 6 lc rgb "black",\
+
+
+
+
+
+
+set output
+unset xrange
+unset yrange

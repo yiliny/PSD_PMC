@@ -1,0 +1,12 @@
+V 1.0.0
+Consider the pbb distribution on a circle divided by N arcs, with numerical and analytical results. However, this version would furnish negative analytical expectations if initial position is close to boundary.
+
+V 1.1.0
+Update analytical formulae by Mathematica. See pkint.nb for details.
+V 1.1.1
+Clear useless comments and rewrite simple sentenses in one line.
+
+
+
+
+

@@ -1,0 +1,27 @@
+set terminal postscript eps enhanced color font 'Helvetica, 18'
+set output "pbb_cc.eps" # Note, must write "setput" at first, otherwise there would be no data
+set xlabel "No. Segment"
+set ylabel "Probability"
+set title "Diffusion on Circle (q=1, N=10^6, r_0=0.9, {/Symbol q}_0=0.0)"
+#set title ""
+set border
+set xrange[0:61]
+set yrange [-1e-3 : ]
+set xtics
+set ytics
+set size ratio 0.75
+set key inside right top vertical maxrows 1
+
+
+dataf = "cc-pbnum.txt"
+dataa = "cc-pbana.txt"
+
+plot dataf using 1:2 title "num." with lines lw 2 lc rgb 'black',\
+dataa using 1:2 title "ana." with points ls 6 lc rgb 'red'
+
+
+
+
+set output
+unset xrange
+unset yrange
