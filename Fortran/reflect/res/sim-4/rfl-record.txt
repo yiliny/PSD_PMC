@@ -1,0 +1,15 @@
+PSD @ YYE. Version 2.0.2.. Simulation on 2023- 5-31   13h22
+Done for particle   200000, Time used (s)  6.072E+01
+Done for particle   400000, Time used (s)  1.221E+02
+Done for particle   600000, Time used (s)  1.831E+02
+Done for particle   800000, Time used (s)  2.441E+02
+Done for particle  1000000, Time used (s)  3.024E+02
+
+
+ Average Threshold     9.9814127796680530E-002
+ Average Local Time    8.5257637852781301E-002
+ Average Diff Time    0.19384404876962605     
+
+
+
+It spent  302.4507 seconds for the whole program.

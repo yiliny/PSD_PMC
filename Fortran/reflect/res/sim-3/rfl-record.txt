@@ -1,0 +1,7 @@
+PSD @ YYE. Version 2.0.1.. Simulation on 2023- 5-31   10h19
+Done for particle   166667, Time used (s)  3.956E+02
+Done for particle   333334, Time used (s)  8.060E+02
+Done for particle   500001, Time used (s)  1.210E+03
+Done for particle   666668, Time used (s)  1.616E+03
+Done for particle   833335, Time used (s)  2.021E+03
+It spent 2425.6014 seconds for the whole program.

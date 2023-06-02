@@ -1,0 +1,5 @@
+V 2.0.1, 31/05/23.
+Standard Codes for Local Time by Reflection.
+
+V 2.0.2, 31/05/23.
++ Average Local Time, Average Stop Time

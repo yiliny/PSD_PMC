@@ -1,0 +1,4 @@
+PSD @ YYE. Version 2.0.2.. Simulation on 2023- 5-31   13h28
+# Polygon   3, Gmax   2, Length    2.00, Thickness 1.00E-03
+# No. Particle  1000000, Rho ratio  2.00, Reactivity 1.00E+00, Diff coef 1.00E+00
+

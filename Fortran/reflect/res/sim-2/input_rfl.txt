@@ -14,6 +14,6 @@
 
 2.0d0 ! "rho_ratio" = \rho / \epsilon
 
-1.0d-1 ! "q_rect"
+1.0d1 ! "q_rect"
 
 1.0d0 ! "diff_coef"

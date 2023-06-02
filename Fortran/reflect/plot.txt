@@ -14,15 +14,15 @@ unset ytics
 set size ratio 1.1 ## Do not understand, but w/o this ratio, weird figure given 
 
 
-data_boundary = "diff-coord.txt"
-data_final = "diff-particle_final.txt"
+data_boundary = "rfl-coord.txt"
+#data_final = "diff-particle_final.txt"
 #data_traj = "diff-particle_traj.txt"
 data_traj = "donnees.txt"
 
  
-plot data_boundary using 1:2 title "" with lines lw 0.2 lc rgb 'black',\
-data_traj using 1:2 title "" with lines lw 0.5 lc rgb '#6a3d9a',\
-data_traj using 1:2 title "" with points ls 6 lc rgb '#6a3d9a',\
+plot data_boundary using 1:2 title "" with lines lw 0.8 lc rgb 'black',\
+data_traj using 1:2 title "" with lines lw 1.5 lc rgb '#6a3d9a',\
+data_traj using 1:2 title "" with points ls 6 lc rgb 'red',\
 #data_final using 1:2 title "" with points ls 6 lc rgb "red",\
 
 

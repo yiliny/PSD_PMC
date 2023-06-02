@@ -13,7 +13,6 @@ Program main
     integer :: cross, inside, touch !! Variables for Reflection
     integer :: traj_max
     real*8 :: angle_ini, tta, new_x, new_y, radius_min, radius, u, l1, l2, ell, ell_hat, time_diff
-    real*8 :: avg_seuil, avg_local, avg_temps
     real*8,allocatable :: position(:,:), coord_x(:), coord_y(:), account(:), zeta(:)
     integer,allocatable :: rec_index(:,:), search_index(:) !! Arrays to record indices
     integer,external:: noloop !! Function to return reasonnable segment index
@@ -30,14 +29,14 @@ Program main
         62 format(10X,'X coord',10X,'Y coord',10X,'Generation',10X,'Radius',10X,'Time',10X,'Local Time')
         63 format(12X,'X coord',12X,'Y coord',12X,'Time',12X,'Local Time',12X,'Threshold')
         64 format('#',3X,'Segment Index',3X,'Hitting Probability')
-        71 format(2(3X,ES20.10))
+        71 format(2(3X,ES12.6))
         72 format(2(3X,f16.8),2X,I6,3(2X,f16.8))
         73 format(5(4X,f16.8))
         74 format(2X,I6,10X,ES10.4)
         !76 format(8(2X,I6),f14.5) !! format for file(36)=debug.txt
         91 format('# Polygon',I4,', Gmax',I4,', Length',f8.2,', Thickness ',ES8.2)
         92 format('# No. Particle',I9,', Rho ratio',f6.2,', Reactivity ',ES8.2,', Diff coef ',ES8.2)
-        94 format('PSD @ YYE. Version 2.1.0.. Simulation on ',I4,2('-',I2),'   ',I2,'h',I2)
+        94 format('PSD @ YYE. Version 2.0.1.. Simulation on ',I4,2('-',I2),'   ',I2,'h',I2)
         95 format("Done for particle",I9,", Time used (s)",ES11.3)
         99 format('It spent',f10.4,' seconds for the whole program.')
     continue
@@ -74,7 +73,6 @@ Program main
     allocate(account(num_points-1)) !! account = count @ Python
     coord_x = 0.0d0; coord_y = 0.0d0; account = 0.0d0
     traj_max = 5
-    avg_seuil = 0.0d0; avg_local = 0.0d0; avg_temps = 0.0d0
 
 
 	
@@ -259,11 +257,8 @@ Program main
                         end if
                         if (i <= 20) write(33,73) position(i,1), position(i,2), time_diff, ell, ell_hat !! Print final positions, diffusion time, local time
                         account(k) = account(k) + 1
+                        write(37,'(ES14.6)') time_diff
                         !write(36,*) "***** Particle Attached! *****"; !write(36,*) "i = ",i; !write(36,*); !write(36,*); !write(36,*)
-                        !write(37,'(ES14.6)') time_diff
-                        avg_temps = avg_temps + time_diff
-                        avg_local = avg_local + ell
-                        avg_seuil = avg_seuil + ell_hat
                         goto 1101 !! Jump the out while loop.
                     end if
                 else
@@ -343,7 +338,7 @@ Program main
         end do 
 
         1101 continue
-        if (MOD(i,ceiling(num_particle/5.0d0)).eq.0) then
+        if (MOD(i,ceiling(num_particle/6.0d0)).eq.0) then
             call cpu_time(temps_provisoire)
             write(*,95) i,temps_provisoire-temps_debut
             write(30,95) i,temps_provisoire-temps_debut
@@ -357,13 +352,7 @@ Program main
         account(i) = account(i) / num_particle
         write(34,74) i, account(i)
     end do
-    
-    write(30,*); write(30,*)
-    avg_seuil = avg_seuil / num_particle; write(30,*) "Average Threshold  ", avg_seuil
-    avg_local = avg_local / num_particle; write(30,*) "Average Local Time ", avg_local
-    avg_temps = avg_temps / num_particle; write(30,*) "Average Diff Time  ", avg_temps
-    write(30,*); write(30,*); write(30,*)
-    
+
 
 
     goto 1104
@@ -384,14 +373,13 @@ Program main
 
     deallocate(position); deallocate(coord_x); deallocate(coord_y); deallocate(account)
     deallocate(rec_index)
-    close(31); close(32); close(33); close(34); !close(35); 
+    close(30); close(31); close(32); close(33); close(34); !close(35); 
     close(36); close(37)
 
 
     call cpu_time(temps_fin)
     write(*,99) temps_fin-temps_debut !! Write the total time consumed to the screen.
     write(30,99) temps_fin-temps_debut
-    close(30)
 	! close files?
 end Program main
 
@@ -639,7 +627,7 @@ subroutine reflection(x1,y1, x2,y2, x0,y0, x3,y3, x4,y4, croise, interieure, tou
     real*8 :: x0, y0, time, local_time !! Particle coordinates, inside 1-2. time t; local_time ell_t
     real*8, intent(in) :: threshold
     integer :: croise, interieure, touche !! encounter: how many times reflection on the boundary; interieure: inside (=1) layer or not (=0); touche: once touch boundary (=1) or not (=0);
-    integer :: case1, case2, case_new, angle1, angle2 !! Left/Right boundary point environments. Condition after diffusion.
+    integer :: case1, case2, case_new !! Left/Right boundary point environments. Condition after diffusion.
     real*8 :: d1, d2, radius_min, d14, d23 !! Left/Right boundary point distance. 
     real*8 :: deltax, deltay, dist_xy, theta, st, ct, xdist, ydist, dxnew, dynew, u !! Variables for Rotations.
     real*8 :: eps, rho, delta !! epaisseur, rayon, temps.
@@ -647,33 +635,14 @@ subroutine reflection(x1,y1, x2,y2, x0,y0, x3,y3, x4,y4, croise, interieure, tou
     !!! 1. Rotation; 2. Determine case & radius; 3. Diffusion; 4. Reflection; 5. Determine inside or not; 6. Anti-rotation
 
 
-    !!! [01] Rotation
+    !!! [1] Rotation
     deltax = x2 - x1; deltay = y2 - y1
     dist_xy = sqrt(deltax**2 + deltay**2) !! Do not understand. But this expression run faster.
     !dist_xy = span(x1,y1,x2,y2)
     !dist_xy = seg_l
-
-
-    !!! [0] Determine abuse or obtuse angle
-    d23 = span(x2,y2,x3,y3)
-    if (d23 > sqrt2 * dist_xy) then
-        angle1 = 2 !! 2π/3 = 120
-    else
-        angle1 = 1 !! π/3 = 60
-    end if
-
-    d14 = span(x1,y1,x4,y4)
-    call random_number(u)
-    if (d14 > sqrt2 * dist_xy) then
-        angle2 = 2 !! 2π/3 = 120
-    else
-        angle2 = 1 !! π/3 = 60
-    end if
-
-
-    !!! [1] Rotation
-    if (x1 == x2) then
-        if (y1 <= y2) then
+    
+    if (x1.eq.x2) then
+        if (y1.le.y2) then
             theta = + pi / 2.0d0
         else
             theta = - pi / 2.0d0
@@ -681,7 +650,7 @@ subroutine reflection(x1,y1, x2,y2, x0,y0, x3,y3, x4,y4, croise, interieure, tou
     else
         theta = atan(deltay/deltax)
     end if
-    if (x1 > x2) theta = theta + pi
+    if (x1.gt.x2) theta = theta + pi
     st = sin(theta); ct = cos(theta)
     xdist = x0 - x1; ydist = y0 - y1
     dxnew = + ct * xdist + st * ydist; dynew = - st * xdist + ct * ydist
@@ -690,104 +659,41 @@ subroutine reflection(x1,y1, x2,y2, x0,y0, x3,y3, x4,y4, croise, interieure, tou
     !!! [2] Determine case & radius
     eps = thickness
     rho = rho_ratio * eps
-    !case1 = 6; case2 = 6 !! Help to determine whether we call "distance", and then which point is closer.
+    case1 = 6; case2 = 6 !! Help to determine whether we call "distance", and then which point is closer.
 
-    
-    if (abs(croise) > 1) then !! Inside crossing region
-        call random_number(u)
-        if (croise > 0) then !! Close to xy2
-            if (croise == 2) then !! 4π/3 close to xy2
-                d2 = span(x2,y2, x0,y0)
-                if (d2 < eps * 1.0d-4) then
-                    radius_min = eps * 0.9d0
-                    u = pi / 3.0d0 * (4.0d0 * u - 1.0d0)
-                    
-                    if (u < pi / 6.0d0) then
-                        croise = +1
-                    else if (u > pi / 2.0d0) then
-                        croise = 0
-                    end if
-
-                    x0 = x2 + radius_min * cos(u)
-                    y0 = y2 + radius_min * sin(u)
-                    dxnew = + ct * (x0 - x1) + st * (y0 - y1)
-                    dynew = - st * (x0 - x1) + ct * (y0 - y1)
-                else
-                    radius_min = d2
-                    u = u * twopi
-                end if
-                goto 3204 !! 靠近xy2点直接扩散
-            else !! (croise == 3), π/3 close to xy2
-                call distance(x1,y1, x2,y2, x0,y0, case1, d1)
-                call distance(x2,y2, x4,y4, x0,y0, case2, d2)
-                if ((d1 < eps * 1.0d-4).and.(d2 < eps * 1.0d-4)) then
-                    radius_min = eps
-                    u = pi / 3.0d0 * (u + 2.0d0)
-                else
-                    radius_min = min(d1,d2)
-                    u = u * twopi
-                end if
-            end if
-        else !! Close to xy1
-            if (croise == -2) then !! 4π/3 close to xy1
-                d1 = span(x1,y1, x0,y0)
-                if (d1 < eps * 1.0d-4) then !! Almost converge to point xy1
-                    radius_min = eps * 0.9d0
-                    u = pi / 3.0d0 * u * 4.0d0
-
-                    if (u < pi/2.0d0) then
-                        croise = 0
-                    else if (u > pi / 6.0d0 * 5.0d0) then
-                        croise = -1
-                    end if
-                else
-                    radius_min = d1
-                    u = u * twopi
-                end if
-            else !! (croise == -3), π/3 close to xy1
-                call distance(x3,y3, x1,y1, x0,y0, case1, d1)
-                call distance(x1,y1, x2,y2, x0,y0, case2, d2)
-                if ((d1 < eps * 1.0d-4).and.(d2 < eps * 1.0d-4)) then
-                    radius_min = eps
-                    u = pi / 3.0d0 * u
-                else
-                    radius_min = min(d1,d2)
-                    u = u * twopi
-                end if
-
-            end if
-            
+    if (abs(croise) == 2) then
+        if (croise == 2) then
+            d2 = span(x2,y2, x0,y0)
+            case2 = 0
+            radius_min = min(rho, d2)
+        else
+            d1 = span(x1,y1, x0,y0)
+            case1 = 0
+            radius_min = min(rho, d1)
         end if
-
-        !! Diffusion for xy1 nearby points.
-        dxnew = radius_min * cos(u)
-        dynew = radius_min * sin(u)
-
-
-
-        3204 continue
-        goto 3203 !! Complete Diffusion, Then only consider the local time increasement.
-        
+        goto 3202
     end if
 
-
-    !! Normal case inside 1/2 segment / interval.
-    if (dxnew < septds3 * eps) then !! Close 31 segment.
-        if (angle1 == 2) then !! 2π/3 = 120
+    if (dxnew < septds3 * eps) then
+        d23 = span(x2,y2,x3,y3)
+        !d23 = sqrt((x2-x3)**2 + (y2-y3)**2)
+        if (d23 > sqrt2 * dist_xy) then
             d1 = span(x1,y1,x0,y0)
-        else !! π/3 = 60
+        else
             !call distance(x3,y3, x1,y1, x0,y0, case1, d1)
             d1 = abs(sqrt3 * dxnew - dynew) / 2.0d0
-            !case1 = 0 
+            case1 = 0 
         end if
         radius_min = min(rho, d1); croise = -1
-    else if (dxnew > dist_xy - septds3 * eps) then !! Close to 24 segment
-        if (angle2 == 2) then !! 2π/3 = 120
+    else if (dxnew > dist_xy - septds3 * eps) then
+        d14 = span(x1,y1,x4,y4)
+        !d14 = sqrt((x1-x4)**2 + (y1-y4)**2)
+        if (d14 > sqrt2 * dist_xy) then
             d2 = span(x2,y2,x0,y0)
-        else !! π/3 = 60
+        else
             !call distance(x2,y2, x4,y4, x0,y0, case2, d2)
             d2 = abs(sqrt3 * dxnew + dynew - dist_xy) / 2.0d0
-            !case2 = 0
+            case2 = 0
         end if
         radius_min = min(rho, d2); croise = +1
     else
@@ -797,13 +703,13 @@ subroutine reflection(x1,y1, x2,y2, x0,y0, x3,y3, x4,y4, croise, interieure, tou
     rayon = radius_min
 
 
-    !if (radius_min < 1.0d-4 * eps) then !! Once the particle is trapped to a point, stop the simulation directly.
-    !    interieure = 2
-    !    call random_number(u)
-    !    if ((case1==0).and.(u<0.5d0)) croise = -1
-    !    if ((case2==0).and.(u<0.5d0)) croise = +1
-    !    goto 3201
-    !end if
+    if (radius_min < 1.0d-4 * eps) then !! Once the particle is trapped to a point, stop the simulation directly.
+        interieure = 2
+        call random_number(u)
+        if ((case1==0).and.(u<0.5d0)) croise = -1
+        if ((case2==0).and.(u<0.5d0)) croise = +1
+        goto 3201
+    end if
     
     
     !!! [3] Diffusion
@@ -820,7 +726,6 @@ subroutine reflection(x1,y1, x2,y2, x0,y0, x3,y3, x4,y4, croise, interieure, tou
     x0 = x1 + xdist; y0 = y1 + ydist
     
 
-    3203 continue !! 
     !!! [7] Add Local Time
     if (touche > 0) then !! Only the reflection case can increase local time.
         delta = radius_min**2 / (4.0d0 * diff_coef)
@@ -842,64 +747,48 @@ subroutine reflection(x1,y1, x2,y2, x0,y0, x3,y3, x4,y4, croise, interieure, tou
             call distance(x2,y2, x4,y4, x0,y0, case_new, d2)
             select case (case_new)
                 case(0) !! angle = 120
-                    if (dynew > eps) then !! 上方出界
+                    if (dynew > eps) then
                         interieure = 0
                         goto 3201
                     end if
                     if (dxnew > dist_xy) then
-                        if (d2 > eps) then !! 小扇形外部，出界
+                        if (d2 > eps) then
                             interieure = 0
-                        else !! 小扇形内部
+                        else
                             croise = +2
                         end if
-                    else !! 仍在12区间
-                        croise = 0 !! 31/05/23 added.
                     end if
                 case(1) !! angle = 60, but not inside layer
-                    if (dynew > eps) then !! 未进入扩散层，出界
-                        interieure = 0
-                    else !! 仍在12区间内扩散层
-                        croise = 0 !! 31/05/23 added.
-                    end if
+                    if (dynew > eps) interieure = 0
                 case(2) !! angle = 60, but inside layer
-                    !if (d2 < dynew) then
-                    if (dynew > eps) then !! 已离开12区间扩散层，进入24区间扩散层
+                    if (d2 < dynew) then
                         croise = +1 !! Attach to right segment
-                    else !! 处于124扩散层交界，且角度π/3
-                        !croise = 0
-                        croise = +3
+                    else
+                        croise = 0
                     end if
             end select
         else !! Particle closer to left boundary point
             call distance(x3,y3, x1,y1, x0,y0, case_new, d1)
             select case (case_new)
                 case(0) !! angle = 120
-                    if (dynew > eps) then !! 上方出界
+                    if (dynew > eps) then
                         interieure = 0
                         goto 3201
                     end if
                     if (dxnew < 0) then
-                        if (d1 > eps) then !! 小扇形外部，出界
+                        if (d1 > eps) then
                             interieure = 0
-                        else !! 小扇形内部
+                        else
                             croise = -2
                         end if
-                    else !! 仍在12区间
-                        croise = 0 !! 31/05/23 added.
                     end if
                 case(1) !! angle = 60, but not inside layer
-                    if (dynew > eps) then  !! 未进入扩散层，出界
-                        interieure = 0
-                    else !! 仍在12区间内扩散层
-                        croise = 0 !! 31/05/23 added.
-                    end if
+                    if (dynew > eps) interieure = 0
                 case(2) !! angle = 60, but inside layer
-                    !if (d1 < dynew) then
-                    if (dynew > eps) then !! 已离开12区间扩散层，进入31区间扩散层
+                    if (d1 < dynew) then
                         croise = -1 !! Attach to left segment
-                    else !! 处于312扩散层交界，且角度π/3
-                        !croise = 0
-                        croise = -3 !! 31/05/23 added.
+                    else
+                        croise = 0
                     end if
             end select
         end if
